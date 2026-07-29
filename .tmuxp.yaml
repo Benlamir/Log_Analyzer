@@ -1,0 +1,11 @@
+session_name: Log_Analyzr 
+windows:
+  - window_name: ide
+    layout: main-vertical
+    options:
+      main-pane-width: 65%
+    panes:
+      - shell_command:
+        - nvim .
+      - shell_command:
+        - clear
