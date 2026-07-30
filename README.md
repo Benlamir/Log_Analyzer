@@ -16,7 +16,7 @@
 * [cite_start]**Security Note**: The Discord Webhook URL must never be hardcoded into the script[cite: 51]. [cite_start]It must be retrieved via an environment variable using the `os` module[cite: 52].
 
 ## 4. Execution and Usage
-* [cite_start]**Testing**: Before running on a live system, generate a fake `auth.log` file in the user space and manually insert typical log lines (successful connections and failedbattempts) to safely test the script[cite: 33, 34].
+* [cite_start]**Testing**: Before running on a live system, generate a fake `auth.log` file in the user space and manually insert typical log lines (successful connections and failed attempts) to safely test the script[cite: 33, 34].
 * [cite_start]**Production**: To make the script autonomous, execute it in the background using native Linux tools[cite: 47]. [cite_start]This can be achieved by setting up a cron job or creating a basic systemd service[cite: 48].
 
 ## 5. Architecture
