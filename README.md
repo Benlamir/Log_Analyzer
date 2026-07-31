@@ -1,19 +1,19 @@
 # Log Analyzer and Automated Alerts
 
 ## 1. Business Problem Solved
-[cite_start]This tool demonstrates practical system diagnosis and a fundamental understanding of security, specifically access management[cite: 28]. 
+This tool demonstrates practical system diagnosis and a fundamental understanding of security, specifically access management.
 
 ## 2. Technical Functionality
-* [cite_start]The application runs in the background and monitors a critical Linux server log file, such as `/var/log/auth.log` or Nginx container logs, in real-time[cite: 24, 39].
-* [cite_start]It uses regular expressions (the `re` module) to extract the IP address and timestamp specifically from failed connection attempts[cite: 40].
-* [cite_start]The script stores problematic IP addresses in a data structure, such as a dictionary, to count their occurrences[cite: 41].
-* [cite_start]It detects anomalies by isolating malicious IP addresses once an alert threshold (e.g., 5 failed attempts from the same IP) is reached[cite: 24, 25, 42].
-* [cite_start]An automated notification containing a JSON payload (with the targeted IP, date, and time) is sent via an HTTP POST request to a Discord Webhook channel[cite: 26, 46].
+* The application runs in the background and monitors a critical Linux server log file, such as `/var/log/auth.log` or Nginx container logs, in real-time.
+* It uses regular expressions (the `re` module) to extract the IP address and timestamp specifically from failed connection attempts.
+* The script stores problematic IP addresses in a data structure, such as a dictionary, to count their occurrences.
+* It detects anomalies by isolating malicious IP addresses once an alert threshold (e.g., 5 failed attempts from the same IP) is reached.
+* An automated notification containing a JSON payload (with the targeted IP, date, and time) is sent via an HTTP POST request to a Discord Webhook channel.
 
 ## 3. Prerequisites and Setup
-* [cite_start]**Environment**: A Linux Virtual Machine (e.g., Ubuntu via VirtualBox) or Windows Subsystem for Linux (WSL) is required[cite: 32].
-* [cite_start]**Permissions**: Understanding of Linux permissions (`chmod`, `chown`) is necessary to allow the script to securely read system logs located in `/var/log/`[cite: 35, 36].
-* [cite_start]**Security Note**: The Discord Webhook URL must never be hardcoded into the script[cite: 51]. [cite_start]It must be retrieved via an environment variable using the `os` module[cite: 52].
+* **Environment**: A Linux Virtual Machine (e.g., Ubuntu via VirtualBox) or Windows Subsystem for Linux (WSL) is required.
+* **Permissions**: Understanding of Linux permissions (`chmod`, `chown`) is necessary to allow the script to securely read system logs located in `/var/log/`.
+* **Security Note**: The Discord Webhook URL must never be hardcoded into the script. It must be retrieved via an environment variable using the `os` module.
 
 ## 4. Execution and Usage
 Unlike a simple "one-shot" script, this engine is designed to run as a continuous background process (a Daemon) using a `while True:` loop. This allows it to monitor the log file in real-time, waiting for new connections to be appended to the file.
